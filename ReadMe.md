@@ -1,8 +1,8 @@
-# express-context-logger
+# custom-logger-beauty
 
 Beautiful console logger with file context for Node.js applications. Shows exactly which file called the log function, making debugging much easier!
 
-[![npm version](https://badge.fury.io/js/express-context-logger.svg)](https://www.npmjs.com/package/express-context-logger)
+[![npm version](https://badge.fury.io/js/custom-logger-beauty.svg)](https://www.npmjs.com/package/custom-logger-beauty)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
 ## Features
@@ -12,13 +12,13 @@ Beautiful console logger with file context for Node.js applications. Shows exact
 - ⚡ **Easy integration** - override console or use directly
 - 🔧 **Configurable** - customize colors, format, and behavior
 - 📦 **Zero config** - works out of the box
-- 🚀 **Express.js friendly** - perfect for web applications
+- 🚀 **Web applications friendly** - perfect for any Node.js project
 - 💪 **TypeScript support** - full type safety and IntelliSense
 
 ## Installation
 
 ```bash
-npm install express-context-logger
+npm install custom-logger-beauty
 ```
 
 ## Quick Start
@@ -27,10 +27,10 @@ npm install express-context-logger
 
 ```javascript
 // JavaScript
-import logger from 'express-context-logger';
+import logger from 'custom-logger-beauty';
 
 // TypeScript
-import logger from 'express-context-logger';
+import logger from 'custom-logger-beauty';
 
 // Override console methods
 logger.override();
@@ -52,10 +52,10 @@ Output:
 
 ```javascript
 // JavaScript
-import logger from 'express-context-logger';
+import logger from 'custom-logger-beauty';
 
 // TypeScript  
-import logger from 'express-context-logger';
+import logger from 'custom-logger-beauty';
 
 logger.log('Direct usage');
 logger.info('Information');
@@ -64,11 +64,11 @@ logger.error('Error');
 logger.debug('Debug info');
 ```
 
-## Express.js Integration
+## Web Applications Integration
 
 ```javascript
 import express from 'express';
-import logger from 'express-context-logger';
+import logger from 'custom-logger-beauty';
 
 const app = express();
 
@@ -90,7 +90,7 @@ app.listen(3000, () => {
 ### Custom Colors and Options
 
 ```javascript
-import logger from 'express-context-logger';
+import logger from 'custom-logger-beauty';
 
 // Configure the logger with custom options
 logger.setOptions({
@@ -112,7 +112,7 @@ logger.override();
 ### Chaining Configuration
 
 ```javascript
-import logger from 'express-context-logger';
+import logger from 'custom-logger-beauty';
 
 // Chain configuration and override
 logger.setOptions({
@@ -128,7 +128,7 @@ console.log('This will show context with timestamp');
 ### Default Logger
 
 ```javascript
-import logger from 'express-context-logger';
+import logger from 'custom-logger-beauty';
 
 logger.log(...args)           // Green [LOG] output
 logger.info(...args)          // Blue [INFO] output  
@@ -155,7 +155,7 @@ logger.setOptions(options)    // Configure logger options, returns logger instan
 
 ```javascript
 // utils/database.js
-import logger from 'express-context-logger';
+import logger from 'custom-logger-beauty';
 logger.override();
 
 export function connectDB() {
@@ -167,7 +167,7 @@ export function connectDB() {
 ### With Timestamps
 
 ```javascript
-import logger from 'express-context-logger';
+import logger from 'custom-logger-beauty';
 
 logger.setOptions({ 
   showTimestamp: true 
@@ -214,8 +214,8 @@ MIT © [Your Name]
 This package is written in TypeScript and provides full type definitions. You get IntelliSense and type checking out of the box.
 
 ```typescript
-import logger from 'express-context-logger';
-import type { LoggerOptions, ColorName } from 'express-context-logger';
+import logger from 'custom-logger-beauty';
+import type { LoggerOptions, ColorName } from 'custom-logger-beauty';
 
 const options: LoggerOptions = {
   showTimestamp: true,
