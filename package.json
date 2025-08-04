@@ -1,5 +1,5 @@
 {
-  "name": "express-context-logger",
+  "name": "custom-logger-beauty",
   "version": "1.0.0",
   "description": "Beautiful console logger with file context for Node.js applications",
   "main": "dist/index.js",
@@ -10,7 +10,8 @@
     "dev": "node --loader ts-node/esm src/index.ts",
     "start": "npm run build && node dist/index.js",
     "example": "node --loader ts-node/esm src/examples/basic.ts",
-    "example:js": "npm run build && node dist/examples/basic.js"
+    "example:js": "npm run build && node dist/examples/basic.js",
+    "publish": "npm publish"
   },
   "keywords": [
     "logger",
@@ -19,7 +20,8 @@
     "express",
     "chalk",
     "debugging",
-    "development"
+    "development",
+    "log"
   ],
   "author": "Hasan Kuray <hasankryy@gmail.com>",
   "license": "MIT",
@@ -36,12 +38,12 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/yourusername/express-context-logger.git"
+    "url": "git+https://github.com/hasankurayy/nodejs-custom-logger.git"
   },
   "bugs": {
-    "url": "https://github.com/yourusername/express-context-logger/issues"
+    "url": "https://github.com/hasankurayy/nodejs-custom-logger/issues"
   },
-  "homepage": "https://github.com/yourusername/express-context-logger#readme",
+  "homepage": "https://github.com/hasankurayy/nodejs-custom-logger#readme",
   "files": [
     "dist/",
     "README.md",
