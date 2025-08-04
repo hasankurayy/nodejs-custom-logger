@@ -1,5 +1,7 @@
 import logger from '../index.js';
 
+logger.log('This is a basic log message without override');
+
 // Override console methods
 logger.setOptions({
   showTimestamp: true,

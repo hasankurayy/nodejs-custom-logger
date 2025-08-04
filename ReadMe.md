@@ -13,6 +13,7 @@ Beautiful console logger with file context for Node.js applications. Shows exact
 - 🔧 **Configurable** - customize colors, format, and behavior
 - 📦 **Zero config** - works out of the box
 - 🚀 **Express.js friendly** - perfect for web applications
+- 💪 **TypeScript support** - full type safety and IntelliSense
 
 ## Installation
 
@@ -25,6 +26,10 @@ npm install express-context-logger
 ### Option 1: Override Console (Recommended)
 
 ```javascript
+// JavaScript
+import logger from 'express-context-logger';
+
+// TypeScript
 import logger from 'express-context-logger';
 
 // Override console methods
@@ -46,6 +51,10 @@ Output:
 ### Option 2: Use Logger Directly
 
 ```javascript
+// JavaScript
+import logger from 'express-context-logger';
+
+// TypeScript  
 import logger from 'express-context-logger';
 
 logger.log('Direct usage');
@@ -81,10 +90,10 @@ app.listen(3000, () => {
 ### Custom Colors and Options
 
 ```javascript
-import { ContextLogger } from 'express-context-logger';
+import logger from 'express-context-logger';
 
-const customLogger = new ContextLogger({
-  showContext: true,          // Show file context (default: true)
+// Configure the logger with custom options
+logger.setOptions({
   showTimestamp: true,        // Show timestamp (default: false)
   contextColor: 'cyan',       // Context bracket color (default: 'yellow')
   colors: {
@@ -96,24 +105,22 @@ const customLogger = new ContextLogger({
   }
 });
 
-// Override with custom logger
-customLogger.override();
+// Override console with configured logger
+logger.override();
 ```
 
-### Restore Original Console
+### Chaining Configuration
 
 ```javascript
 import logger from 'express-context-logger';
 
-// Override console
-const restore = logger.override();
+// Chain configuration and override
+logger.setOptions({
+  showTimestamp: true,
+  contextColor: 'cyan'
+}).override();
 
-console.log('This will show context');
-
-// Restore original console
-restore();
-
-console.log('This is back to normal console');
+console.log('This will show context with timestamp');
 ```
 
 ## API Reference
@@ -123,27 +130,24 @@ console.log('This is back to normal console');
 ```javascript
 import logger from 'express-context-logger';
 
-logger.log(...args)     // Green [LOG] output
-logger.info(...args)    // Blue [INFO] output  
-logger.warn(...args)    // Yellow [WARN] output
-logger.error(...args)   // Red [ERROR] output to stderr
-logger.debug(...args)   // Magenta [DEBUG] output
-logger.override()       // Override console methods, returns restore function
+logger.log(...args)           // Green [LOG] output
+logger.info(...args)          // Blue [INFO] output  
+logger.warn(...args)          // Yellow [WARN] output
+logger.error(...args)         // Red [ERROR] output to stderr
+logger.debug(...args)         // Magenta [DEBUG] output
+logger.override()             // Override console methods
+logger.setOptions(options)    // Configure logger options, returns logger instance
 ```
 
-### ContextLogger Class
+### Configuration Options
 
-```javascript
-import { ContextLogger } from 'express-context-logger';
-
-const logger = new ContextLogger(options);
-```
-
-**Options:**
-- `showContext: boolean` - Show file context (default: `true`)
+**setOptions(options)** accepts an object with:
 - `showTimestamp: boolean` - Show timestamp (default: `false`)  
-- `contextColor: string` - Color for context brackets (default: `'yellow'`)
-- `colors: object` - Colors for each log level
+- `contextColor: ColorName` - Color for context brackets (default: `'yellow'`)
+- `colors: LoggerColors` - Colors for each log level
+
+**Available Colors:**
+`'black'`, `'red'`, `'green'`, `'yellow'`, `'blue'`, `'magenta'`, `'cyan'`, `'white'`, `'gray'`, `'grey'`
 
 ## Examples
 
@@ -163,12 +167,11 @@ export function connectDB() {
 ### With Timestamps
 
 ```javascript
-import { ContextLogger } from 'express-context-logger';
+import logger from 'express-context-logger';
 
-const logger = new ContextLogger({ 
+logger.setOptions({ 
   showTimestamp: true 
-});
-logger.override();
+}).override();
 
 console.log('Server started'); 
 // Output: [LOG] [app.js] [2024-01-15T10:30:45.123Z] Server started
@@ -190,6 +193,7 @@ try {
 
 - Node.js >= 16.0.0
 - ES Modules support
+- TypeScript >= 5.0.0 (if using TypeScript)
 
 ## Contributing
 
@@ -205,7 +209,35 @@ try {
 
 MIT © [Your Name]
 
+## TypeScript Support
+
+This package is written in TypeScript and provides full type definitions. You get IntelliSense and type checking out of the box.
+
+```typescript
+import logger from 'express-context-logger';
+import type { LoggerOptions, ColorName } from 'express-context-logger';
+
+const options: LoggerOptions = {
+  showTimestamp: true,
+  contextColor: 'cyan' as ColorName,
+  colors: {
+    info: 'blue',
+    error: 'red'
+  }
+};
+
+logger.setOptions(options).override();
+```
+
 ## Changelog
+
+### 2.0.0
+- **BREAKING:** Converted to TypeScript
+- **BREAKING:** Removed ContextLogger class export
+- **BREAKING:** Removed restore functionality from override()
+- Added full TypeScript support with type definitions
+- Added setOptions() method for configuration
+- Improved project structure with separate type files
 
 ### 1.0.0
 - Initial release

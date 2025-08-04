@@ -2,11 +2,15 @@
   "name": "express-context-logger",
   "version": "1.0.0",
   "description": "Beautiful console logger with file context for Node.js applications",
-  "main": "index.js",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
   "type": "module",
   "scripts": {
-    "start": "node .",
-    "example": "node examples/basic.js"
+    "build": "tsc",
+    "dev": "node --loader ts-node/esm src/index.ts",
+    "start": "npm run build && node dist/index.js",
+    "example": "node --loader ts-node/esm src/examples/basic.ts",
+    "example:js": "npm run build && node dist/examples/basic.js"
   },
   "keywords": [
     "logger",
@@ -22,7 +26,11 @@
   "dependencies": {
     "chalk": "^5.3.0"
   },
-  "devDependencies": {},
+  "devDependencies": {
+    "typescript": "^5.3.0",
+    "@types/node": "^20.10.0",
+    "ts-node": "^10.9.0"
+  },
   "engines": {
     "node": ">=16.0.0"
   },
@@ -35,7 +43,7 @@
   },
   "homepage": "https://github.com/yourusername/express-context-logger#readme",
   "files": [
-    "index.js",
+    "dist/",
     "README.md",
     "LICENSE"
   ]
